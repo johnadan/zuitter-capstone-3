@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 Route::middleware("auth")->group(function(){
-Route::get('/dashboard', "DashboardController@index");
+Route::get('/dashboard', "DashboardController@showuserDashboard");
 	//});
-Route::get('/admindashboard', "AdminDashboardController@index");
+Route::get('/admindashboard', "AdminDashboardController@showadminDashboard");
 	//});
 });
 

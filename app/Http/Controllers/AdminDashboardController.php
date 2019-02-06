@@ -22,7 +22,7 @@ class AdminDashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showadminDashboard()
     {
     	return view('layouts.admindashboard');
         // if(Auth::user()->isAdmin === 1){
