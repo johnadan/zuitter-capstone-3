@@ -15,15 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware("auth")->group(function(){
+
+//Route::middleware("auth")->group(function(){
+
+	//});
+
+	//});
+//});
+
+Route::middleware(['auth'])->group(function(){
 Route::get('/dashboard', "DashboardController@showuserDashboard");
-	//});
-Route::get('/admindashboard', "AdminDashboardController@showadminDashboard");
-	//});
 });
 
-
+Route::middleware(['admin'])->group(function(){
+Route::get('/admindashboard', "AdminDashboardController@showadminDashboard");
+});
 // });
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

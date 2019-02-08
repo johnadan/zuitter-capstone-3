@@ -1,1 +1,0 @@
-<footer>TuittER 2018</footer>

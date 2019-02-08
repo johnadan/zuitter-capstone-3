@@ -2,16 +2,15 @@
 <html>
 <head>
 	<title>@yield('title')</title>
-	@include('layouts.header')
+	@include('includes.header')
 </head>
-@include('layouts.nav')
+@include('includes.nav')
 <body>
-	@if(Auth::user()->isAdmin === 1)
-	@yield('admin_body')
-
-	@else
-	@yield('user_body')
-	@endif
 	
+
+	
+	@yield('content')
+	
+@include('includes.footer')	
 </body>
 </html>
