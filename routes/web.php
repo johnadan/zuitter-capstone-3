@@ -13,8 +13,12 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+//});
+})->name('welcome');
 
+// Route::get('/app', function () {
+//     return view('layouts.app');
+// });
 
 //Route::middleware("auth")->group(function(){
 
@@ -23,8 +27,12 @@ Route::get('/', function () {
 	//});
 //});
 
+//Route::get('/home', 'HomeController@index')->name('home');
+
 Route::middleware(['auth'])->group(function(){
-Route::get('/dashboard', "DashboardController@showuserDashboard");
+Route::get('/dashboard', "PostController@getDashboard");
+Route::post('/createpost', "PostController@postCreatePost");
+Route::get('/deletePost/{post_id}', "PostController@getDeletePost");
 });
 
 Route::middleware(['admin'])->group(function(){
@@ -33,4 +41,4 @@ Route::get('/admindashboard', "AdminDashboardController@showadminDashboard");
 // });
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+

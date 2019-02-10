@@ -7,8 +7,87 @@
 	color: #000000;
 }
 
+.nav-link:hover {
+    background-color: #b6bad0;
+    color: #fffff0;
+} 
+
+.button.is-btn-red {
+    background-color: #c2195b;
+    border-color: transparent;
+    color: #fff;
+    }
+
+.button.is-btn-blue {
+    background-color: #27698d;
+    border-color: transparent;
+    color: #fff;
+    margin-top: 0;
+}    
+
+.tuitt-button {
+    font-size: 1rem;
+    font-family: Open Sans,serif;
+    font-weight: 600;
+    cursor: pointer;
+    border: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    box-shadow: 1px 1px 1px #333;
+}
+
+.button {
+    justify-content: center;
+    padding: calc(.375em - 1px) .75em;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    align-items: center;
+    display: inline-flex;
+    height: 2.25em;
+    line-height: 1.5;
+    position: relative;
+    vertical-align: top;
+    user-select: none;
+    text-decoration: none;
+}    
+
+a.is-red[data-v-0685d64a]:hover, button.is-red[data-v-0685d64a]:hover {
+    background-color: #9b1449;
+}
+
+a.is-red[data-v-0685d64a], button.is-red[data-v-0685d64a] {
+    background-color: #c2195b;
+    color: #fff;
+    }
+
+.error {
+border: 1px solid red;
+background-color: #f9b5af;
+color: red;
+}
+
+.error ul {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.error, .success {
+text-align: center;
+}
+
+.success {
+border: 1px solid green;
+background-color: #d1f9da;
+color: green;
+}    
+
 body {
             background-color: #eeeeee;
+            /*font-family: Open Sans;*/
         }
 
         .h7 {
