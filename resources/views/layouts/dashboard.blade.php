@@ -15,17 +15,20 @@
 	</div>
 </div>
 
+
+{{-- {{dd(Auth::user())}} --}}
 <div class="container-fluid gedf-wrapper">
     <div class="row">
         <div class="col-md-3">
             <div class="card">
-                <!-- @foreach($posts as $post) -->
+                {{-- <!-- @foreach($posts as $post) --> --}}
                 <div class="card-body">
-                    <!-- <h5>{{ $post->user->username }}</h5> -->
-                    <h5>Lorem Ipsum</h5>
+                    {{-- <!-- <h5>{{ $post->user->username }}</h5> --> --}}
+                    <h5>{{ (Auth::user()->firstname) }} {{ (Auth::user()->lastname) }}</h5>
+                    {{-- <!-- <h5>Lorem Ipsum</h5> --> --}}
                     <div class="h7 text-muted">
-                        <!-- {{ $post->user->firstname }} 
-                                    {{ $post->user->lastname }} -->
+                        {{-- <!-- {{ $post->user->firstname }}
+                                    {{ $post->user->lastname }} --> --}}
                     </div>
                     <div class="h7">Developer of web applications, JavaScript, PHP, HTML, CSS, Bootstrap, Laravel
                     </div>
@@ -41,7 +44,7 @@
                     </li>
                     <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
-                <!-- @endforeach -->
+                {{-- <!-- @endforeach --> --}}
             </div>
         </div>
         <div class="col-md-6 gedf-main">
@@ -112,8 +115,9 @@
 
             <!--- \\\\\\\Post-->
             <div class="card gedf-card">
+
                 @foreach($posts as $post)
-                    <!-- @foreach($post->Post as $userpost) -->
+                    {{-- <!-- @foreach($post->Post as $userpost) --> --}}
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex justify-content-between align-items-center">
@@ -122,12 +126,14 @@
                             </div>
                             <div class="ml-2">
                                 <div class="h5 m-0">
-                                    <!-- {{ $post->user->firstname }} 
-                                    {{ $post->user->lastname }} -->
+                                    <!-- comment <output></output> -->
+                                    {{-- <!-- {{ $post->user->firstname }} 
+                                    {{ $post->user->lastname }} --> --}}
+
                                 </div>
                                 <div class="h7 text-muted">
                                     <!-- <p>@</p> -->
-                                    <!-- {{ $post->user->username }} -->
+                                    {{-- <!-- {{ $post->user->username }} --> --}}
                                 </div>
                             </div>
                         </div>
@@ -148,15 +154,17 @@
                 </div>
                 <div class="card-body">
                     
-                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>Posted by 
-                        <!-- {{ $post->user->firstname }} 
-                        {{ $post->user->lastname }} --> 
+                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>Posted by {{ (Auth::user()->firstname) }} 
+                        {{ (Auth::user()->lastname) }}
+                        {{-- <!-- dd(Auth::user()->firstname) --> --}}
+                        {{-- <!-- {{ $post->user->firstname }} 
+                        {{ $post->user->lastname }} --> --}}
                         at 
-                        <!-- {{ $post->created_at }} -->
+                        {{ $post->created_at }}
                     </div>
-                    <a class="card-link" href="#">
+                    {{-- <!-- <a class="card-link" href="#">
                         <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
-                    </a>
+                    </a> --> --}}
                     <p class="card-text">
                         {{ $post->content }}
                     </p>
@@ -165,14 +173,15 @@
                 <div class="card-footer">
                     <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                     <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                    <!-- {{ method_field('DELETE')}} -->
-                    @if(Auth::user() == $post->user)
                     <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                    <a href="" class="card-link"><i class="fa fa-mail-forward" data-postid="{{ $post->id }}"></i> Edit</a>
+                    <!-- {{ method_field('DELETE')}} -->
+                    @if(Auth::user()->id == $post->user_id) 
+                    
+                    <a href="#" id="edit" class="card-link"><i class="fa fa-mail-forward" data-postid="{{ $post->id }}"></i> Edit</a>
                     <a href="/deletePost/{post_id}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a>
-                    @endif
+                   @endif 
                 </div>
-                    <!-- @endforeach -->
+                   {{-- <!-- @endforeach --> --}}
                 @endforeach
             </div>
             <!-- Post /////-->
@@ -291,15 +300,17 @@
         <div class="col-md-3">
             <div class="card gedf-card">
                 <div class="card-body">
-                    <h5 class="card-title">@loremipsum</h5>
+                    {{-- @foreach($users as $user)--}}
+                    <h5 class="card-title">{{-- $user->firstname --}} {{-- $user->laststname --}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">lorem ipsum</h6>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
                     <a href="#" class="card-link">Follow</a>
                     <a href="#" class="card-link">Another link</a>
+                    {{-- @endforeach --}}
                 </div>
             </div>
-            <!-- <div class="card gedf-card">
+            {{-- <!-- <div class="card gedf-card">
                 <div class="card-body">
                     <h5 class="card-title">@Loremipsum</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Lorem Ipsum</h6>
@@ -308,12 +319,12 @@
                     <a href="#" class="card-link">Follow</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
-            </div> -->
+            </div> --> --}}
         </div>    
     </div>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog">
+{{-- <!-- <div class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -331,6 +342,29 @@
       </div>
     </div>
   </div>
-</div>
+</div> --> --}}
+
+<div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit Post</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="post-body">Edit Post</label>
+                <textarea class="form-control" name="post-body" id="post-body" rows="5"></textarea>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 @endsection
