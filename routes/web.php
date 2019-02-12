@@ -33,10 +33,19 @@ Route::middleware(['auth'])->group(function(){
 Route::get('/dashboard', "PostController@getDashboard");
 Route::post('/createpost', "PostController@postCreatePost");
 Route::get('/deletePost/{post_id}', "PostController@getDeletePost");
+//Route::post('/editPost/{post_id}', "PostController@getEditPost");
+//Route::post('/editPost', "PostController@getEditPost");
+Route::post('/editpost', function(\Illuminate\Http\Request $request) {
+	return response()->json([$request ['post-body']]); 
+	//return response()->json([$request ['postId']]);
+})->name('edit');
+//});
+
 });
 
 Route::middleware(['admin'])->group(function(){
 Route::get('/admindashboard', "AdminDashboardController@showadminDashboard");
+//Route::post ( '/addItem', 'AdminDashboardController@addItem' );
 });
 // });
 Auth::routes();

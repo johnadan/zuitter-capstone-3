@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Validator;
 
 class AdminDashboardController extends Controller
 {
@@ -33,5 +34,27 @@ class AdminDashboardController extends Controller
         //}
         
     }
+
+    // public function addUser(){
+    //     $user = new User();
+    // }
+
+    // public function addItem(Request $request) {
+    // $rules = array (
+    //         'name' => 'required'
+    // );
+    // $validator = Validator::make ( Input::all (), $rules );
+    // if ($validator->fails ())
+    //     return Response::json ( array (
+                    
+    //             'errors' => $validator->getMessageBag ()->toArray ()
+    //     ) );
+    //     else {
+    //         $data = new Data ();
+    //         $data->name = $request->name;
+    //         $data->save ();
+    //         return response ()->json ( $data );
+    //     }
+    // }
     
 }

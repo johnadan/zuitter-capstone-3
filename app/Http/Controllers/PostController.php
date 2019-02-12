@@ -43,4 +43,11 @@ class PostController extends Controller
     $post->delete();
     return redirect('/dashboard')->with(['message' => 'Post was successfully deleted']);
     }
+
+    public function postEditPost(Request $request){
+        $this->validate($request, [
+            'post-content' => 'required'
+        ]);
+        $post = Post::find($request ['postId']);
+    }
 }

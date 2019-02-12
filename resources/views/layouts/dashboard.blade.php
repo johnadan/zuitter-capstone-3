@@ -30,7 +30,7 @@
                         {{-- <!-- {{ $post->user->firstname }}
                                     {{ $post->user->lastname }} --> --}}
                     </div>
-                    <div class="h7">Developer of web applications, JavaScript, PHP, HTML, CSS, Bootstrap, Laravel
+                    <div class="h7">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, JQuery, AJAX, JSON, and Laravel
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -165,7 +165,7 @@
                     {{-- <!-- <a class="card-link" href="#">
                         <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
                     </a> --> --}}
-                    <p class="card-text">
+                    <p class="card-text" data-postid="{{ $post->id }}">
                         {{ $post->content }}
                     </p>
                     
@@ -177,7 +177,7 @@
                     <!-- {{ method_field('DELETE')}} -->
                     @if(Auth::user()->id == $post->user_id) 
                     
-                    <a href="#" id="edit" class="card-link"><i class="fa fa-mail-forward" data-postid="{{ $post->id }}"></i> Edit</a>
+                    <a href="#" id="editPost" class="card-link"><i class="fa fa-mail-forward" data-postid="{{ $post->id }}"></i> Edit</a>
                     <a href="/deletePost/{post_id}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a>
                    @endif 
                 </div>
@@ -361,10 +361,20 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="savePost">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<script>
+var token = '{{ Session::token() }}';
+var url = '{{ route('edit') }}';
+</script>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 
 @endsection

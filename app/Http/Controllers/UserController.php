@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Controller;
+
 class UserController extends Controller
 {
     //
@@ -11,4 +13,10 @@ class UserController extends Controller
     // 	$users = User::orderBy('created_at', 'id')->get();
     // 	return view('layouts.dashboard', compact('$users' => ['users']));
     // }
+    public function show(Request $request, $id)
+    {
+        $value = $request->session()->get('key');
+
+        //
+    }
 }
