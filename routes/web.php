@@ -35,10 +35,14 @@ Route::post('/createpost', "PostController@postCreatePost");
 Route::get('/deletePost/{post_id}', "PostController@getDeletePost");
 //Route::post('/editPost/{post_id}', "PostController@getEditPost");
 //Route::post('/editPost', "PostController@getEditPost");
-Route::post('/editpost', function(\Illuminate\Http\Request $request) {
-	return response()->json([$request ['post-body']]); 
+//Route::post('/editpost', function(\Illuminate\Http\Request $request) {
+	//return response()->json([$request ['post-body']]); 
+Route::post('/editpost', "PostController@postEditPost")->name('edit'); 
+//{
+//});
+//}	
 	//return response()->json([$request ['postId']]);
-})->name('edit');
+
 //});
 
 });

@@ -36,6 +36,7 @@ class PostController extends Controller
 
     public function getDeletePost($post_id){
     $post = Post::where('id', $post_id)->first();
+    //$post = Post::find($post_id);
     //$post = Post::where('id', $post_id)->firstOrFail();
     //if(Auth::user()->id != $post->user_id){
         //return redirect()->back();
@@ -46,8 +47,11 @@ class PostController extends Controller
 
     public function postEditPost(Request $request){
         $this->validate($request, [
-            'post-content' => 'required'
+            'postbody' => 'required'
         ]);
         $post = Post::find($request ['postId']);
+        $post->postbody = $request['postbody'];
+        $post->update();
+        return response()->json(['message' => 'Post was successfully edited!'], 200);
     }
 }

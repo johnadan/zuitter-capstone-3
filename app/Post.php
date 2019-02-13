@@ -20,6 +20,7 @@ class Post extends Model
     	//return $this->belongsTo('\App\User');
         //return $this->belongsTo('\App\User', 'post_user')->withPivot('user_id')->withTimestamps();
         //return $this->belongsTo('\App\User', 'post_user')->withTimestamps();
-        return $this->belongsToMany('\App\User', 'post_user')->withTimestamps();
+        //return $this->belongsToMany('\App\User', 'post_user')->withTimestamps();
+        return $this->belongsTo('\App\User');
     }
 }

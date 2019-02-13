@@ -8,10 +8,10 @@ $.ajaxSetup({
 // user crud
 
 //edit modal
-$('#editPost').on('click', function() {
+$('#editPost').click(function() {
 	//console.log('It works!');
 	//postId = dataset['postid'];
-	let postBody = $("#post-body").val();
+	let postBody = $("#postbody").val();
 	$('#edit-modal').modal();
 });
 
@@ -36,21 +36,22 @@ $('#editPost').on('click', function() {
 
 //for testing - edit post
 
-$("#savePost").on('click', function(){
+$("#savePost").click(function(){
 	//let postBody = $("#post-body").val();
+	let postId = 0;
 	$.ajax({
 		'type': 'POST',
 		'url': '/editpost',
 		'data': {
 			//_token : '{{ csrf_token() }}',
-			'post-body': $('#post-body').val(),
+			'postbody': $('#postbody').val(),
 			//_token: token
-			//postId : 'postId'
+			postId : 'postId'
 			//'post_id' : ,
 			//'' :
 		},
 		'success' : function(data){
-			console.log(msg['post-body']);
+			console.log(JSON.stringify(msg));
 		}
 	})
 });

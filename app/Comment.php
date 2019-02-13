@@ -19,6 +19,7 @@ class Comment extends Model
     public function user(){
     	//return $this->belongsTo('\App\User', 'comment_user')->withPivot('user_id')->withTimestamps();
         //return $this->belongsTo('\App\User', 'comment_user')->withTimestamps();
-        return $this->belongsToMany('\App\User', 'comment_user')->withTimestamps();
+        //return $this->belongsToMany('\App\User', 'comment_user')->withTimestamps();
+        return $this->belongsTo('\App\User');
     }
 }

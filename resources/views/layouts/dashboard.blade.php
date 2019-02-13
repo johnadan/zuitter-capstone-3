@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'Dashboard')
+@section('title', 'Newsfeed')
 
 @section('content')
 
@@ -154,8 +154,8 @@
                 </div>
                 <div class="card-body">
                     
-                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>Posted by {{ (Auth::user()->firstname) }} 
-                        {{ (Auth::user()->lastname) }}
+                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>Posted by {{ $post->user->firstname }} {{ $post->user->lastname }}
+                        {{-- (Auth::user()->lastname) --}}
                         {{-- <!-- dd(Auth::user()->firstname) --> --}}
                         {{-- <!-- {{ $post->user->firstname }} 
                         {{ $post->user->lastname }} --> --}}
@@ -166,6 +166,7 @@
                         <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
                     </a> --> --}}
                     <p class="card-text" data-postid="{{ $post->id }}">
+                        <!-- or data-id -->
                         {{ $post->content }}
                     </p>
                     
@@ -301,12 +302,11 @@
             <div class="card gedf-card">
                 <div class="card-body">
                     {{-- @foreach($users as $user)--}}
-                    <h5 class="card-title">{{-- $user->firstname --}} {{-- $user->laststname --}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">lorem ipsum</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <h5 class="card-title">{{-- $user->firstname --}} {{-- $user->lastname --}} AnotherUser</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@AnotherUser</h6>
+                    <p class="card-text">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, JQuery, AJAX, JSON, and Laravel</p>
                     <a href="#" class="card-link">Follow</a>
-                    <a href="#" class="card-link">Another link</a>
+                    {{--<!-- <a href="#" class="card-link">Another link</a> -->--}}
                     {{-- @endforeach --}}
                 </div>
             </div>
@@ -355,7 +355,7 @@
         <form>
             <div class="form-group">
                 <label for="post-body">Edit Post</label>
-                <textarea class="form-control" name="post-body" id="post-body" rows="5"></textarea>
+                <textarea class="form-control" name="postbody" id="postbody" rows="5"></textarea>
             </div>
         </form>
       </div>
@@ -368,7 +368,7 @@
 </div><!-- /.modal -->
 
 <script>
-var token = '{{ Session::token() }}';
+// var token = '{{ Session::token() }}';
 var url = '{{ route('edit') }}';
 </script>
 

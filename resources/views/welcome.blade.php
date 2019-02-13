@@ -28,7 +28,7 @@
 
     <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10">
+        <div class="col-lg-10 d-flex justify-content-center">
             <img src="{{ asset('images/dsc_9182-750x498.jpg') }}" class="img-fluid" alt="tuitt instructors with alumnis">
         </div>
     </div>
