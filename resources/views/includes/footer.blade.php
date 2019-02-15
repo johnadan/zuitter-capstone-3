@@ -1,1 +1,1 @@
-<footer class="bg-light text-center">TuittER 2018</footer>
+<footer class="bg-light text-center">Copyright &copy; TuittER 2018 | No copyright infringement intended. Creation and use of this website is for educational purposes only.</footer>
