@@ -47,6 +47,7 @@
                 {{-- <!-- @endforeach --> --}}
             </div>
         </div>
+
         <div class="col-md-6 gedf-main">
 
             <!--- \\\\\\\Post-->
@@ -165,7 +166,7 @@
                     {{-- <!-- <a class="card-link" href="#">
                         <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
                     </a> --> --}}
-                    <p class="card-text" data-postid="{{ $post->id }}">
+                    <p class="card-text" data-postid="{{ $post->id }}" id="postcontent">
                         <!-- or data-id -->
                         {{ $post->content }}
                     </p>
@@ -346,23 +347,28 @@
 
 <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content"> 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Edit Post</h4>
+        <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
         <form>
+            {{-- @if(Auth::user()->id == $post->user_id) --}}
             <div class="form-group">
                 <label for="post-body">Edit Post</label>
-                <textarea class="form-control" name="postbody" id="postbody" rows="5"></textarea>
+                 {{-- @if(Auth::user()->id == $post->user_id) --}}
+                <textarea class="form-control" name="postbody" id="postbody" rows="5">{{ $post->content }}</textarea>
+               {{-- @endif --}}
             </div>
+            {{-- @endif --}}
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="savePost">Save changes</button>
       </div>
+       
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

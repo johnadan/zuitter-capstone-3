@@ -12,6 +12,11 @@ $('#editPost').click(function() {
 	//console.log('It works!');
 	//postId = dataset['postid'];
 	let postBody = $("#postbody").val();
+	postId = $("#postbody").val();
+	//
+	//$('#fid').val($(this).data('id'));
+    //$('#n').val($(this).data('name'));
+
 	$('#edit-modal').modal();
 });
 
@@ -37,8 +42,8 @@ $('#editPost').click(function() {
 //for testing - edit post
 
 $("#savePost").click(function(){
-	//let postBody = $("#post-body").val();
-	let postId = 0;
+	//let postBody = $("#postbody").val();
+	//let postId = 0;
 	$.ajax({
 		'type': 'POST',
 		'url': '/editpost',
@@ -46,9 +51,14 @@ $("#savePost").click(function(){
 			//_token : '{{ csrf_token() }}',
 			'postbody': $('#postbody').val(),
 			//_token: token
-			postId : 'postId'
+			'postId' : postId
 			//'post_id' : ,
 			//'' :
+			//
+			 //'_token': $('input[name=_token]').val(),
+                //'id': $("#fid").val(),
+                //'name': $('#n').val()
+
 		},
 		'success' : function(data){
 			console.log(JSON.stringify(msg));

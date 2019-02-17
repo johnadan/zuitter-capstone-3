@@ -49,9 +49,16 @@ class PostController extends Controller
         $this->validate($request, [
             'postbody' => 'required'
         ]);
-        $post = Post::find($request ['postId']);
+        //$post = Post::find($request ['postId']); 
+        $post = Post::find($request ['postId'])->where('user_id', Auth::user()->id)->get();
+        //$post = Post::find($request->user()->posts());
         $post->postbody = $request['postbody'];
         $post->update();
         return response()->json(['message' => 'Post was successfully edited!'], 200);
+        //
+        //$data = Data::find ( $req->id );
+        //$data->name = $req->name;
+        //$data->save ();
+        //return response ()->json ( $data );
     }
 }
