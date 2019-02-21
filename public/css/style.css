@@ -113,3 +113,13 @@ body {
             content: none;
             display: none;
         }
+
+/*Tablet*/
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+
+}        
+
+/*Mobile*/
+@media only screen and (max-width: 400px) {
+    
+}

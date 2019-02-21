@@ -37,8 +37,7 @@
           <a class="nav-link" href="/dashboard">Newsfeed <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Hi, {{ strtoupper(Auth::user()->username) }}! {{--<!-- <span class="oi" data-glyph="caret-bottom"></span> --><!-- <a href="#" class="btn btn-default"><span class=""></span> Default text here</a> -->--}}
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{ ucfirst(Auth::user()->username) }}! {{--<!-- <span class="oi" data-glyph="caret-bottom"></span> --><!-- <a href="#" class="btn btn-default"><span class=""></span> Default text here</a> -->--}}
           </a>
         </li>
         <li class="nav-item">

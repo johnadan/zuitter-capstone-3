@@ -5,12 +5,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Presenters\DatePresenter;
+
 class Comment extends Model
 {
     //
     //public function post(){
     	//$this.belongsTo->
     //}
+
+    use DatePresenter;
+ 
+  // fields can be filled
+  protected $fillable = ['content', 'user_id', 'post_id'];
 
     public function post(){
     	return $this->belongsTo('\App\Post');

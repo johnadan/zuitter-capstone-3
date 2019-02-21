@@ -4,7 +4,15 @@
 
 @section('content')
 
-@include('includes.message-block')
+<div class="container-fluid">
+    <div class="row text-center mt-2">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+             @include('includes.message-block')
+        </div>
+    </div>
+</div>
+
 
 <div class="container-fluid">
 	<div class="row">
@@ -24,7 +32,7 @@
                 {{-- <!-- @foreach($posts as $post) --> --}}
                 <div class="card-body">
                     {{-- <!-- <h5>{{ $post->user->username }}</h5> --> --}}
-                    <h5>{{ (Auth::user()->firstname) }} {{ (Auth::user()->lastname) }}</h5>
+                    <h5>{{ ucfirst(Auth::user()->firstname) }} {{ ucfirst(Auth::user()->lastname) }}</h5>
                     {{-- <!-- <h5>Lorem Ipsum</h5> --> --}}
                     <div class="h7 text-muted">
                         {{-- <!-- {{ $post->user->firstname }}
@@ -36,17 +44,18 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="h6 text-muted">Followers</div>
-                        <div class="h5">5.2342</div>
+                        <div class="h5">1234</div>
                     </li>
                     <li class="list-group-item">
                         <div class="h6 text-muted">Following</div>
-                        <div class="h5">6758</div>
+                        <div class="h5">5678</div>
                     </li>
                     <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
                 {{-- <!-- @endforeach --> --}}
             </div>
         </div>
+
         <div class="col-md-6 gedf-main">
 
             <!--- \\\\\\\Post-->
@@ -165,7 +174,7 @@
                     {{-- <!-- <a class="card-link" href="#">
                         <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
                     </a> --> --}}
-                    <p class="card-text" data-postid="{{ $post->id }}">
+                    <p class="card-text" data-postid="{{ $post->id }}" id="postcontent">
                         <!-- or data-id -->
                         {{ $post->content }}
                     </p>
@@ -174,6 +183,21 @@
                 <div class="card-footer">
                     <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                     <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                    {{-- @if (Auth::check())
+                      @include('includes.errors')
+                      {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
+                      <p>{{ Form::textarea('content', old('content')) }}</p>
+                      {{ Form::hidden('post_id', $post->id) }}
+                      <p>{{ Form::submit('Send') }}</p>
+                    {{ Form::close() }}
+                    @endif
+                    @forelse ($post->comments as $comment)
+                      <p>{{ $comment->user->name }} {{$comment->created_at}}</p>
+                      <p>{{ $comment->body }}</p>
+                      <hr>
+                    @empty
+                      <p>This post has no comments</p>
+                    @endforelse --}}
                     <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                     <!-- {{ method_field('DELETE')}} -->
                     @if(Auth::user()->id == $post->user_id) 
@@ -346,23 +370,28 @@
 
 <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content"> 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Edit Post</h4>
+        <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
         <form>
+            {{-- @if(Auth::user()->id == $post->user_id) --}}
             <div class="form-group">
                 <label for="post-body">Edit Post</label>
-                <textarea class="form-control" name="postbody" id="postbody" rows="5"></textarea>
+                 {{-- @if(Auth::user()->id == $post->user_id) --}}
+                <textarea class="form-control" name="postbody" id="postbody" rows="5">{{ $post->content }}</textarea>
+               {{-- @endif --}}
             </div>
+            {{-- @endif --}}
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="savePost">Save changes</button>
       </div>
+       
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
