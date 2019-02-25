@@ -27,7 +27,7 @@
 
 .tuitt-button {
     font-size: 1rem;
-    font-family: Open Sans,serif;
+    /*font-family: Open Sans,serif;*/
     font-weight: 600;
     cursor: pointer;
     border: 0;
@@ -100,8 +100,8 @@ body {
 
         @media (min-width: 992px) {
             .gedf-main {
-                padding-left: 4rem;
-                padding-right: 4rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
             .gedf-card {
                 margin-bottom: 2.77rem;

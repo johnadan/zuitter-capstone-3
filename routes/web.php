@@ -32,12 +32,13 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function(){
 Route::get('/dashboard', "PostController@getDashboard");
 Route::post('/createpost', "PostController@postCreatePost");
-Route::get('/deletePost/{post_id}', "PostController@getDeletePost");
+Route::delete('/deletePost/{id}', "PostController@getDeletePost")->name('post.delete');
 //Route::post('/editPost/{post_id}', "PostController@getEditPost");
 //Route::post('/editPost', "PostController@getEditPost");
-Route::post('/editpost', function(\Illuminate\Http\Request $request) {
-	return response()->json([$request ['postId']]); 
-})->name('edit');
+// Route::post('/editpost', function(\Illuminate\Http\Request $request) {
+// 	return response()->json([$request ['postId']]); 
+// })->name('edit');
+Route::put('/editPost/{post_id}', "PostController@postEditPost")->name('post.edit');
 //Route::post('/editpost', "PostController@postEditPost")->name('edit'); 
 //{
 //});
@@ -45,7 +46,6 @@ Route::post('/editpost', function(\Illuminate\Http\Request $request) {
 	//return response()->json([$request ['postId']]);
 
 //});
-
 Route::get('/post/{id}', 'PostController@show')->name('posts.show');
 Route::resource('comments', 'CommentController');
 });
@@ -53,6 +53,8 @@ Route::resource('comments', 'CommentController');
 Route::middleware(['admin'])->group(function(){
 Route::get('/admindashboard', "AdminDashboardController@showadminDashboard");
 //Route::post ( '/addItem', 'AdminDashboardController@addItem' );
+Route::put('/updateUser/{id}', "AdminDashboardController@updateUser");
+Route::delete('/archiveUser/{id}', "AdminDashboardController@archiveUser");
 });
 // });
 Auth::routes();

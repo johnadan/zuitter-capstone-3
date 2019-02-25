@@ -5,20 +5,29 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+$(document).on('click', '#deleteModalBtn', function(){
+	$('#deleteModal').modal('show');
+	let id = $(this).data('id');
+	//console.log(id);
+	$("#deletePost").attr("action", "/deletePost/"+id);
+});
+
 // user crud
 
 //edit modal
-$('#editPost').click(function() {
+// $('#editPost').click(function() {
+// 	let postBody = $("#postbody").val();
+// 	postId = $("#postbody").val();
+// 	$('#edit-modal').modal();
+// });
+
 	//console.log('It works!');
 	//postId = dataset['postid'];
-	let postBody = $("#postbody").val();
-	postId = $("#postbody").val();
+	
 	//
 	//$('#fid').val($(this).data('id'));
     //$('#n').val($(this).data('name'));
-
-	$('#edit-modal').modal();
-});
 
 //initial edit post
 //$("#savePost").on('click', function(){
@@ -41,30 +50,20 @@ $('#editPost').click(function() {
 
 //for testing - edit post
 
-$("#savePost").click(function(){
-	//let postBody = $("#postbody").val();
-	//let postId = 0;
-	$.ajax({
-		'type': 'POST',
-		'url': '/editpost',
-		'data': {
-			//_token : '{{ csrf_token() }}',
-			'postbody': $('#postbody').val(),
-			//_token: token
-			'postId' : postId
-			//'post_id' : ,
-			//'' :
-			//
-			 //'_token': $('input[name=_token]').val(),
-                //'id': $("#fid").val(),
-                //'name': $('#n').val()
-
-		},
-		'success' : function(data){
-			console.log(JSON.stringify(msg));
-		}
-	})
-});
+// $("#savePost").click(function(){
+	
+// 	$.ajax({
+// 		'type': 'POST',
+// 		'url': '/editpost',
+// 		'data': {
+// 			'postbody': $('#postbody').val(),
+// 			'postId' : postId
+// 		},
+// 		'success' : function(data){
+// 			console.log(JSON.stringify(msg));
+// 		}
+// 	})
+// });
 
 // $.ajax({
 // method: 'POST',
@@ -103,3 +102,13 @@ $("#savePost").click(function(){
 //     });
 //     $('#name').val('');
 // });
+//let postBody = $("#postbody").val();
+	//let postId = 0;
+//_token : '{{ csrf_token() }}',
+			//_token: token
+			//'post_id' : ,
+			//'' :
+			//
+			 //'_token': $('input[name=_token]').val(),
+                //'id': $("#fid").val(),
+                //'name': $('#n').val()

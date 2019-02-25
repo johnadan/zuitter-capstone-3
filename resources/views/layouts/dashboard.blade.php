@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col">
 			<br>
-			<h6>This is your newsfeed. Follow interesting students and alumnis to get updates from them</h6>	
+			<h6 class="text-center">This is your newsfeed. Follow interesting students and alumnis to get updates from them</h6>	
 		</div>
 	</div>
 </div>
@@ -58,7 +58,7 @@
 
         <div class="col-md-6 gedf-main">
 
-            <!--- \\\\\\\Post-->
+           {{-- <!--- \\\\\\\Post--> --}}
             <div class="card gedf-card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -77,7 +77,7 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="sr-only" for="message">post</label>
-                                <!-- <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea> -->
+                               {{-- <!-- <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea> --> --}}
                                 <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?" name="post"></textarea>
                             </div>
                             <div class="btn-group">
@@ -102,9 +102,9 @@
                     </div>
                     <div class="btn-toolbar justify-content-between">
                         
-                        <!-- <div class="btn-group">
-                                <a target="_blank" id="tuitt_home_nav_apply_button_mobile" class="button tuitt-button is-btn-red text-white" data-v-0685d64a="">Tuitt!</a>
-                        </div> -->
+                       {{-- <!-- <div class="btn-group">
+                                <a target="_blank" id="tuitt_home_nav_apply_button_mobile" class="button tuitt-button is-btn-red text-white" data-v-0685d64a="">Tuitt!</a> 
+                        </div> --> --}}
 
                         <div class="btn-group">
                             <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -120,9 +120,9 @@
                     </div>
                 </div>
             </div>
-            <!-- Post /////-->
+           {{-- <!-- Post /////--> --}}
 
-            <!--- \\\\\\\Post-->
+           {{-- <!--- \\\\\\\Post--> --}}
             <div class="card gedf-card">
 
                 @foreach($posts as $post)
@@ -135,14 +135,14 @@
                             </div>
                             <div class="ml-2">
                                 <div class="h5 m-0">
-                                    <!-- comment <output></output> -->
-                                    {{-- <!-- {{ $post->user->firstname }} 
+                                   {{-- <!-- comment <output></output> -->
+                                     <!-- {{ $post->user->firstname }} 
                                     {{ $post->user->lastname }} --> --}}
 
                                 </div>
                                 <div class="h7 text-muted">
-                                    <!-- <p>@</p> -->
-                                    {{-- <!-- {{ $post->user->username }} --> --}}
+                                   {{-- <!-- <p>@</p> -->
+                                     <!-- {{ $post->user->username }} --> --}}
                                 </div>
                             </div>
                         </div>
@@ -163,7 +163,7 @@
                 </div>
                 <div class="card-body">
                     
-                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>Posted by {{ $post->user->firstname }} {{ $post->user->lastname }}
+                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Posted by {{ $post->user->firstname }} {{ $post->user->lastname }}
                         {{-- (Auth::user()->lastname) --}}
                         {{-- <!-- dd(Auth::user()->firstname) --> --}}
                         {{-- <!-- {{ $post->user->firstname }} 
@@ -174,8 +174,8 @@
                     {{-- <!-- <a class="card-link" href="#">
                         <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
                     </a> --> --}}
-                    <p class="card-text" data-postid="{{ $post->id }}" id="postcontent">
-                        <!-- or data-id -->
+                    <p class="card-text" data-id="{{ $post->id }}" id="postcontent">
+                       {{-- <!-- or data-id --> --}}
                         {{ $post->content }}
                     </p>
                     
@@ -199,19 +199,22 @@
                       <p>This post has no comments</p>
                     @endforelse --}}
                     <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                    <!-- {{ method_field('DELETE')}} -->
+                    {{-- <!-- {{ method_field('DELETE')}} --> --}}
                     @if(Auth::user()->id == $post->user_id) 
                     
-                    <a href="#" id="editPost" class="card-link"><i class="fa fa-mail-forward" data-postid="{{ $post->id }}"></i> Edit</a>
-                    <a href="/deletePost/{post_id}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a>
+                    
+                    <a href="#" class="card-link" data-toggle="modal"><i class="fa fa-mail-forward"></i> Edit</a>
+                    
+                    <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a>
+                   
                    @endif 
                 </div>
                    {{-- <!-- @endforeach --> --}}
                 @endforeach
             </div>
-            <!-- Post /////-->
+           {{-- <!-- Post /////--> --}}
 
-            <!--- \\\\\\\Post-->
+           {{-- <!--- \\\\\\\Post-->
             <!-- <div class="card gedf-card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
@@ -319,7 +322,7 @@
                     <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                 </div>
             </div> -->
-            <!-- Post /////-->
+            <!-- Post /////--> --}}
         </div>
         
         <div class="col-md-3">
@@ -348,58 +351,81 @@
     </div>
 </div>
 
-{{-- <!-- <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Post</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> --> --}}
 
-<div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content"> 
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body">
-        <form>
-            {{-- @if(Auth::user()->id == $post->user_id) --}}
-            <div class="form-group">
-                <label for="post-body">Edit Post</label>
-                 {{-- @if(Auth::user()->id == $post->user_id) --}}
-                <textarea class="form-control" name="postbody" id="postbody" rows="5">{{ $post->content }}</textarea>
-               {{-- @endif --}}
+{{-- Edit Modal --}}
+    {{-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              <form id="updatePost" method="POST"> 
+                    {{ csrf_field() }}
+                    {{ method_field('PUT')}}
+                    <label>Post</label>
+                    <input type="text" name="editedpost"></input> 
+                    <button type="submit" class="btn btn-danger" data-id="{{$post->id}}" data-name="{{ $post->content }}">Update</button>
+                </form>
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               {{-- <!-- <button type="button" class="btn btn-primary">Save changes</button> -->--}}
+              </div>
             </div>
-            {{-- @endif --}}
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="savePost">Save changes</button>
-      </div>
-       
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>    
+    </div> --}}
 
-<script>
+{{-- Delete Modal --}}
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="deletePost" method="POST" enctype="multipart/form-data"> 
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE')}}
+                    <span id="Postdel">Do you want to delete this post? This cannot be undone</span>
+                    <button type="submit" id="deleteModalBtn" class="btn btn-danger" data-id="{{$post->id}}" data-name="{{ $post->content }}">Delete</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               {{-- <!-- <button type="button" class="btn btn-primary">Save changes</button> --> --}}
+              </div>
+            </div>
+        </div>  
+    </div>
+
+<script type="text/javascript">
+    
+    // function openDeleteModal(id, content){
+    //     $("#deletePost").attr("action", "/deletePost/"+id) ;
+    //     $("#Postdel").html('Do you want to delete this post? This cannot be undone');
+    //     $("#deleteModal").modal("show");
+    // }
+
+    //function openEditModal(post_id, content){
+       // $("#editedpost").val(content);
+        //$("#updatePost").attr("action", "/editPost/" + post_id);
+        //$("#editModal").modal("show");
+    //}
+
+</script> 
+
+{{-- <!-- <script>
 // var token = '{{ Session::token() }}';
-var url = '{{ route('edit') }}';
-</script>
+//var url = '{{ route('edit') }}';
+</script>  --> --}}
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
