@@ -6,12 +6,69 @@ $.ajaxSetup({
     }
 });
 
-$(document).on('click', '#deleteModalBtn', function(){
+$('#delPost').on('click', function(e){
+	e.preventDefault();
 	$('#deleteModal').modal('show');
-	let id = $(this).data('id');
+	var id = $(this).find('button').attr("data-id");
 	//console.log(id);
-	$("#deletePost").attr("action", "/deletePost/"+id);
+	var _token = $("meta[name='csrf-token']").attr('content');
+	$.ajax({
+			type:'DELETE',
+			url:'/deletePost/'+id,
+			data:{_token:_token,id:id},
+			success: function(response){
+				alert(response);
+				location.reload();	
+			}
+		});
+	
 });
+
+// $(document).on('click', '#delPost', function(e){
+// var id = $(this).find('card-link').data('id');
+// alert(id);
+// })
+
+// $(document).on('click', '#deleteModalBtn', function(){
+// 	$('#deleteModal').modal('show');
+// 	let id = $(this).data('id');
+
+// 	//console.log(id);
+// 	$("#deletePost").attr("action", "/deletePost/"+id);
+// });
+
+// $('#unfollow').on('click',function(e){
+// 		e.preventDefault();
+// 		var id = $(this).find('button').attr("data-id");
+// 		var _token = $("meta[name='csrf-token']").attr('content');
+
+// 		$.ajax({
+// 			type:'DELETE',
+// 			url:'/profile/unfollow/'+id,
+// 			data:{_token:_token,id:id},
+// 			success: function(response){
+// 				alert(response);
+// 				location.reload();	
+// 			}
+// 		});
+// 	});
+
+//sample unfollow ajax
+// $('#unfollow').on('click',function(e){
+// 		e.preventDefault();
+// 		var id = $(this).find('button').attr("data-id");
+// 		var _token = $("meta[name='csrf-token']").attr('content');
+
+// 		$.ajax({
+// 			type:'DELETE',
+// 			url:'/profile/unfollow/'+id,
+// 			data:{_token:_token,id:id},
+// 			success: function(response){
+// 				alert(response);
+// 				location.reload();	
+// 			}
+// 		});
+// 	});
 
 // user crud
 

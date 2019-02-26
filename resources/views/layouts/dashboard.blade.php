@@ -44,13 +44,13 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="h6 text-muted">Followers</div>
-                        <div class="h5">1234</div>
+                        <div class="h5">956</div>
                     </li>
                     <li class="list-group-item">
                         <div class="h6 text-muted">Following</div>
-                        <div class="h5">5678</div>
+                        <div class="h5">528</div>
                     </li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    <!-- <li class="list-group-item">Vestibulum at eros</li> -->
                 </ul>
                 {{-- <!-- @endforeach --> --}}
             </div>
@@ -204,9 +204,11 @@
                     
                     
                     <a href="#" class="card-link" data-toggle="modal"><i class="fa fa-mail-forward"></i> Edit</a>
+                    <span id="delPost" class="ml-3">
+                        <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a>
+                    </span>
                     
-                    <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a>
-                   
+                    
                    @endif 
                 </div>
                    {{-- <!-- @endforeach --> --}}
@@ -327,11 +329,13 @@
         
         <div class="col-md-3">
             <div class="card gedf-card">
-                <div class="card-body">
+                <div class="card-body" id="follow">
                     {{-- @foreach($users as $user)--}}
                     <h5 class="card-title">{{-- $user->firstname --}} {{-- $user->lastname --}} AnotherUser</h5>
                     <h6 class="card-subtitle mb-2 text-muted">@AnotherUser</h6>
                     <p class="card-text">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, JQuery, AJAX, JSON, and Laravel</p>
+                    <!-- @csrf
+                    @method('PUT') -->
                     <a href="#" class="card-link">Follow</a>
                     {{--<!-- <a href="#" class="card-link">Another link</a> -->--}}
                     {{-- @endforeach --}}
@@ -391,11 +395,12 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form id="deletePost" method="POST" enctype="multipart/form-data"> 
+                <form action="/deletePost/{{$post->id}}" method="POST" enctype="multipart/form-data"> 
                     {{ csrf_field() }}
-                    {{ method_field('DELETE')}}
+                    {{ method_field('DELETE') }}
                     <span id="Postdel">Do you want to delete this post? This cannot be undone</span>
-                    <button type="submit" id="deleteModalBtn" class="btn btn-danger" data-id="{{$post->id}}" data-name="{{ $post->content }}">Delete</button>
+                    <input type="text" value="{{ $post->content }}">
+                    <button type="submit" id="deleteModalBtn" class="btn btn-danger" data-id="{{ $post->id }}">Delete</button>
                 </form>
               </div>
               <div class="modal-footer">
@@ -414,11 +419,11 @@
     //     $("#deleteModal").modal("show");
     // }
 
-    //function openEditModal(post_id, content){
-       // $("#editedpost").val(content);
-        //$("#updatePost").attr("action", "/editPost/" + post_id);
-        //$("#editModal").modal("show");
-    //}
+    function openEditModal(post_id, content){
+       $("#editedpost").val(content);
+        $("#updatePost").attr("action", "/editPost/" + post_id);
+        $("#editModal").modal("show");
+    }
 
 </script> 
 

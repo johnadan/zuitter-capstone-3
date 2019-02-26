@@ -63,7 +63,7 @@ class AdminDashboardController extends Controller
     //     $post->delete();
     // return redirect('/dashboard')->with(['message' => 'Post was successfully deleted']);
         $user = User::find($id);
-        dd($id);
+        //dd($id);
         $user->delete();
         return redirect('/admindashboard')->with(['message' => 'User was successfully archive']);
     }

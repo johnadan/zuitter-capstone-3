@@ -14,6 +14,7 @@ class PostController extends Controller
         //$posts = Post::all();
         $posts = Post::orderBy('created_at', 'content')->get();
         return view('layouts.dashboard', compact('posts'));
+
     }
 
     public function postCreatePost(Request $request){
@@ -38,6 +39,7 @@ class PostController extends Controller
     //$post = Post::where('id', $post_id)->first();
     //$post = Post::where('id', $post_id)->first();
     $post = Post::find($id);
+    //dd($id);
     //$post = Post::find($id)->firstOrFail();
     //$post = Post::find($id);
     //$post = Post::find($post_id);
