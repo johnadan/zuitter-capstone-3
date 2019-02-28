@@ -6,23 +6,44 @@ $.ajaxSetup({
     }
 });
 
-$('#delPost').on('click', function(e){
-	e.preventDefault();
-	$('#deleteModal').modal('show');
-	var id = $(this).find('button').attr("data-id");
-	//console.log(id);
-	var _token = $("meta[name='csrf-token']").attr('content');
-	$.ajax({
-			type:'DELETE',
-			url:'/deletePost/'+id,
-			data:{_token:_token,id:id},
-			success: function(response){
-				alert(response);
-				location.reload();	
-			}
-		});
+//delete post
+// $('#delPost').on('click', function(e){
+// 	e.preventDefault();
+// 	$('#deleteModal').modal('show');
+// 	var id = $(this).find('button').attr("data-id");
+// 	//console.log(id);
+// 	var _token = $("meta[name='csrf-token']").attr('content');
+// 	$.ajax({
+// 			type:'DELETE',
+// 			url:'/deletePost/'+id,
+// 			data:{_token:_token,id:id},
+// 			success: function(response){
+// 				alert(response);
+// 				location.reload();	
+// 			}
+// 		});
 	
-});
+// });
+
+//edit post, not yet working
+// $('#editPost').on('click', function(e){
+// 	e.preventDefault();
+// 	$('#editModal').modal('show');
+// 	var id = $(this).find('button').attr("data-id");
+// 	//console.log(id);
+// 	var _token = $("meta[name='csrf-token']").attr('content');
+// 	$.ajax({
+// 		type:'PUT',
+// 		url:'/editPost/'+id,
+// 		data:{_token:_token,id:id},
+		
+// 	})
+// })
+
+//update user details
+
+
+//archive user
 
 // $(document).on('click', '#delPost', function(e){
 // var id = $(this).find('card-link').data('id');

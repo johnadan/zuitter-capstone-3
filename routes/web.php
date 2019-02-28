@@ -38,7 +38,7 @@ Route::delete('/deletePost/{id}', "PostController@getDeletePost")->name('post.de
 // Route::post('/editpost', function(\Illuminate\Http\Request $request) {
 // 	return response()->json([$request ['postId']]); 
 // })->name('edit');
-Route::put('/editPost/{post_id}', "PostController@postEditPost")->name('post.edit');
+Route::put('/editPost/{id}', "PostController@postEditPost")->name('post.edit');
 //Route::post('/editpost', "PostController@postEditPost")->name('edit'); 
 //{
 //});
@@ -46,6 +46,7 @@ Route::put('/editPost/{post_id}', "PostController@postEditPost")->name('post.edi
 	//return response()->json([$request ['postId']]);
 
 //});
+//Route::get('/dashboard', "UserController@showUsers");
 Route::get('/post/{id}', 'PostController@show')->name('posts.show');
 Route::resource('comments', 'CommentController');
 });

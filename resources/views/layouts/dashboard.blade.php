@@ -50,7 +50,7 @@
                         <div class="h6 text-muted">Following</div>
                         <div class="h5">528</div>
                     </li>
-                    <!-- <li class="list-group-item">Vestibulum at eros</li> -->
+                   <!--  <li class="list-group-item">Student, Batch 16</li> -->
                 </ul>
                 {{-- <!-- @endforeach --> --}}
             </div>
@@ -198,14 +198,18 @@
                     @empty
                       <p>This post has no comments</p>
                     @endforelse --}}
+                   
                     <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                     {{-- <!-- {{ method_field('DELETE')}} --> --}}
                     @if(Auth::user()->id == $post->user_id) 
                     
+                     <span class="ml-3" id="editPost">
+                        <a href="#" class="card-link" data-toggle="modal" onclick="openEditModal({{ $post->id }}, '{{ $post->content }}' )"><i class="fa fa-mail-forward"></i> Edit</a>
+                    </span>
                     
-                    <a href="#" class="card-link" data-toggle="modal"><i class="fa fa-mail-forward"></i> Edit</a>
-                    <span id="delPost" class="ml-3">
-                        <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a>
+                    <span class="ml-3">
+                        <a href="#" class="card-link" onclick="openDeleteModal({{ $post->id }}, '{{ $post->content }}')"><i class="fa fa-mail-forward"></i> Delete</a>
+                        <!-- <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a> -->
                     </span>
                     
                     
@@ -330,18 +334,18 @@
         <div class="col-md-3">
             <div class="card gedf-card">
                 <div class="card-body" id="follow">
-                    {{-- @foreach($users as $user)--}}
-                    <h5 class="card-title">{{-- $user->firstname --}} {{-- $user->lastname --}} AnotherUser</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@AnotherUser</h6>
+                    {{-- @foreach($users as $user) --}}
+                    <h5 class="card-title">Firstname Lastname{{-- $user->firstname --}} {{-- $user->lastname --}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@firstnamelastname{{-- $user->username --}}</h6>
                     <p class="card-text">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, JQuery, AJAX, JSON, and Laravel</p>
                     <!-- @csrf
                     @method('PUT') -->
                     <a href="#" class="card-link">Follow</a>
                     {{--<!-- <a href="#" class="card-link">Another link</a> -->--}}
-                    {{-- @endforeach --}}
+                   {{-- @endforeach --}}
                 </div>
             </div>
-            {{-- <!-- <div class="card gedf-card">
+             <!-- <div class="card gedf-card">
                 <div class="card-body">
                     <h5 class="card-title">@Loremipsum</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Lorem Ipsum</h6>
@@ -350,14 +354,14 @@
                     <a href="#" class="card-link">Follow</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
-            </div> --> --}}
+            </div> --> 
         </div>    
     </div>
 </div>
 
 
 {{-- Edit Modal --}}
-    {{-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -367,7 +371,7 @@
                 </button>
               </div>
               <div class="modal-body">
-              <form id="updatePost" method="POST"> 
+              <form id="updatePost" method="POST" action="/editPost/{{$post->id}}"> 
                     {{ csrf_field() }}
                     {{ method_field('PUT')}}
                     <label>Post</label>
@@ -378,11 +382,11 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               {{-- <!-- <button type="button" class="btn btn-primary">Save changes</button> -->--}}
+               
               </div>
             </div>
         </div>    
-    </div> --}}
+    </div> 
 
 {{-- Delete Modal --}}
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -395,17 +399,17 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form action="/deletePost/{{$post->id}}" method="POST" enctype="multipart/form-data"> 
+                <form id="delPost" action="/deletePost/{{$post->id}}" method="POST" enctype="multipart/form-data"> 
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                     <span id="Postdel">Do you want to delete this post? This cannot be undone</span>
-                    <input type="text" value="{{ $post->content }}">
+                    <!-- <input type="text" value="{{ $post->content }}"> -->
                     <button type="submit" id="deleteModalBtn" class="btn btn-danger" data-id="{{ $post->id }}">Delete</button>
                 </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               {{-- <!-- <button type="button" class="btn btn-primary">Save changes</button> --> --}}
+               
               </div>
             </div>
         </div>  
@@ -413,24 +417,21 @@
 
 <script type="text/javascript">
     
-    // function openDeleteModal(id, content){
-    //     $("#deletePost").attr("action", "/deletePost/"+id) ;
-    //     $("#Postdel").html('Do you want to delete this post? This cannot be undone');
-    //     $("#deleteModal").modal("show");
-    // }
+    function openDeleteModal(id, content){
+        $("#delPost").attr("action", "/deletePost/"+id) ;
+        $("#Postdel").html('Do you want to delete this post? This cannot be undone');
+        $("#deleteModal").modal("show");
+    }
 
-    function openEditModal(post_id, content){
+    function openEditModal(id, content){
        $("#editedpost").val(content);
-        $("#updatePost").attr("action", "/editPost/" + post_id);
+        $("#updatePost").attr("action", "/editPost/" + id);
         $("#editModal").modal("show");
     }
 
 </script> 
 
-{{-- <!-- <script>
-// var token = '{{ Session::token() }}';
-//var url = '{{ route('edit') }}';
-</script>  --> --}}
+
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"

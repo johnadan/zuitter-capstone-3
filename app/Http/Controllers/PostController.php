@@ -39,6 +39,7 @@ class PostController extends Controller
     //$post = Post::where('id', $post_id)->first();
     //$post = Post::where('id', $post_id)->first();
     $post = Post::find($id);
+    //dd($post);
     //dd($id);
     //$post = Post::find($id)->firstOrFail();
     //$post = Post::find($id);
@@ -58,21 +59,21 @@ class PostController extends Controller
     //     return redirect("/tasklist");
     // }
 
-    public function postEditPost(Request $request, $post_id){
-        $this->validate($request, [
-            'postbody' => 'required'
-        ]);
+    public function postEditPost(Request $request, $id){
+        // $this->validate($request, [
+        //     'content' => 'required'
+        // ]);
         //$post = Post::find($request ['postId']); 
         //$post = Post::find($request ['postId'])->where('user_id', Auth::user()->id)->get();
         $post = Post::find($id);
-
+        //dd($post);
         //$post = Post::find($request->user()->posts());
-        $post->postbody = $request->editedpost;
+        $post->content = $request->editedpost;
         //$post->update();
         $post->save();
         //dd($post);
-        return response()->json(['message' => 'Post was successfully edited!'], 200);
-         return redirect("/dashboard");
+        // return response()->json(['message' => 'Post was successfully edited!'], 200);
+         return redirect("/dashboard")->with(['message' => 'Post was successfully edited!']);
         //
         //$data = Data::find ( $req->id );
         //$data->name = $req->name;

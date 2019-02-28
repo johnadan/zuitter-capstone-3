@@ -33,7 +33,8 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<td>User's Name</td>
+						<td>Name</td>
+						<td>Username</td>
 						<td>Email address</td>
 						<td>Signed up on</td>
 						<td>Actions</td>
@@ -43,11 +44,12 @@
 				 @foreach($users as $user) 
 					<tr>
 						<td>{{ $user->firstname }} {{ $user->lastname }}</td>
+						<td>{{ $user->username }}</td>
 						<td>{{ $user->email }}</td>
 						<td>{{ $user->created_at }}</td>
 						<td>
-							<button type="button" class="button tuitt-button is-btn-red text-white" onclick="openArchiveModal()" data-toggle="modal">Archive</button>
-							<button type="button" class="button tuitt-button is-btn-blue" onclick="openUpdateModal()" data-toggle="modal">Update</button>
+							<!-- <button type="button" id="archive" class="button tuitt-button is-btn-red text-white" onclick="openArchiveModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->email }}' )" data-toggle="modal">Archive</button> -->
+							<button type="button" class="button tuitt-button is-btn-blue" onclick="openUpdateModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->username}}', '{{ $user->email }}' )" data-toggle="modal" id="update">Update</button>
 						</td>
 					</tr>	
 				 @endforeach 
@@ -87,7 +89,7 @@
                 </button>
               </div>
               <div class="modal-body">
-              	<form id="updateUser" method="POST"> 
+              	<form id="updateUser" method="POST" action="/updateUser/{{$user->id}}"> 
                     {{ csrf_field() }}
                     {{ method_field('PUT')}}
                     <label>First Name</label>
@@ -95,11 +97,14 @@
                     <br> 
                     <label>Last Name</label>
                     <input type="text" name="editedlastname"></input>
-                    <br> 
+                    <br>
+                    <label>Username</label>
+                    <input type="text" name="editedusername"> 
+                    <br>
                     <label>Email</label>
                     <input type="text" name="editedemail"></input>
                     <br> 
-                    <button type="submit" class="button tuitt-button is-btn-red text-white">Update</button>
+                    <button type="submit" class="button tuitt-button is-btn-red text-white" data-id="{{$user->id}}">Update</button>
                 </form>
                 
               </div>
@@ -122,11 +127,11 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form id="archiveUser" method="POST" enctype="multipart/form-data"> 
+                <form id="archiveUser" method="POST" enctype="multipart/form-data" action="/archiveUser/{{$user->id}}"> 
                     {{ csrf_field() }}
                     {{ method_field('DELETE')}}
                     <span id="Userarchive">Do you want to deactivate this user? This cannot be undone</span>
-                    <button type="submit" class="button tuitt-button is-btn-red text-white">Yes</button>
+                    <button type="submit" class="button tuitt-button is-btn-red text-white" data-id="{{$user->id}}">Yes</button>
                 </form>
               </div>
               <div class="modal-footer">
@@ -145,9 +150,10 @@
         $("#archiveModal").modal("show");
     }
 
-    function openUpdateModal(id, firstname, lastname, email){
+    function openUpdateModal(id, firstname, lastname, username, email){
        $("#editedfirstname").val(firstname);
        $("#editedlastname").val(lastname);
+       $("#editedusername").val(username);
        $("#editedemail").val(email);
         $("#updateUser").attr("action", "/updateUser/" + id);
         $("#updateModal").modal("show");
@@ -155,10 +161,7 @@
 
 </script> 
 
-{{-- <script>
-// var token = '{{ Session::token() }}';
-//var url = '{{ route('edit') }}';
-</script> --}}
+
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"

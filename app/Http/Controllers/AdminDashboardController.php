@@ -45,17 +45,19 @@ class AdminDashboardController extends Controller
         // return response()->json(['message' => 'Post was successfully edited!'], 200);
         //  return redirect("/dashboard");
         $user = User::find($id);
-        $this->validate($request, [
-            'editedfirstname' => 'required',
-            'editedlastname' => 'required',
-            'editedemail' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'editedfirstname' => 'required',
+        //     'editedlastname' => 'required',
+        //     'editedemail' => 'required'
+        // ]);
         $user->firstname = $request->editedfirstname;
         $user->lastname = $request->editedlastname;
+        $user->username = $request->editedusername;
         $user->email = $request->editedemail;
-        $user->update();
-        return response()->json(['message' => 'User details was successfully updated!'], 200);
-        return redirect("/admindashboard");
+        //$user->update();
+        $user->save();
+        // return response()->json(['message' => 'User details were successfully updated!'], 200);
+        return redirect("/admindashboard")->with(['message' => 'User details were successfully updated!']);
     }
 
     public function archiveUser($id) {

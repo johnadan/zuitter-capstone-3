@@ -19,4 +19,9 @@ class UserController extends Controller
         $value = $request->session()->get('key');
         //
     }
+
+    // public function showUsers(){
+    //     $users = User::orderBy('created_at', 'id')->get();
+    //     return view('layouts.dashboard', compact('users'));
+    // }
 }
