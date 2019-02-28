@@ -24,7 +24,7 @@ class AdminDashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showadminDashboard() { 
-        $users = User::orderBy('created_at', 'id')->get();
+        $users = User::orderBy('created_at', 'ASC')->get();
         return view('layouts.admindashboard', compact('users'));
     	//return view('layouts.admindashboard');
         // if(Auth::user()->isAdmin === 1){
