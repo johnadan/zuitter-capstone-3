@@ -12,7 +12,7 @@ class PostController extends Controller
 
     public function getDashboard(){
         //$posts = Post::all();
-        $posts = Post::orderBy('created_at', 'ASC')->get();
+        $posts = Post::orderBy('created_at', 'DESC')->get();
         return view('layouts.dashboard', compact('posts'));
 
     }
