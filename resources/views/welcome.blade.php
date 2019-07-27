@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'Welcome')
+@section('title', 'Zuitter - Home')
 
 @section('content')
 
@@ -8,9 +8,9 @@
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
-            <h1 class="text-center">Welcome to TuittER!<h1>
+            <h1 class="text-center">Welcome to ZuittER!<h1>
             <br>
-            <h6 class="text-center">The professional social media network and forum exclusively for alumnis and students of Tuitt Coding Bootcamp Philippines!</h6>
+            <h6 class="text-center">The professional forum/community exclusively for alumnis and students of Zuitt Coding Bootcamp Philippines!</h6>
             <br>
             <a class="button tuitt-button is-btn-red text-white" href="{{ route('login') }}">Sign in</a>  
             <a class="button tuitt-button is-btn-blue" href="{{ route('register') }}" data-v-0a0ff1ea="">Sign up</a> 
@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-10 d-flex justify-content-center">
-            <img src="{{ asset('images/dsc_9182-750x498.jpg') }}" class="img-fluid mt-5 mb-5" alt="tuitt instructors with alumnis">
+            <img src="{{ asset('images/dsc_9182-750x498.jpg') }}" class="img-fluid mt-5 mb-5" alt="zuitt instructors with alumnis">
         </div>
     </div>
 </div>

@@ -38,7 +38,7 @@
                         {{-- <!-- {{ $post->user->firstname }}
                                     {{ $post->user->lastname }} --> --}}
                     </div>
-                    <div class="h7">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, JQuery, AJAX, JSON, and Laravel
+                    <div class="h7">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, JQuery, and Laravel
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -63,7 +63,7 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Create a post</a>
+                            <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Post something</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Post an Image</a>

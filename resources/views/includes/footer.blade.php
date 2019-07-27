@@ -1,1 +1,1 @@
-<footer class="py-3 bg-dark text-center text-white pt-3 pb-3 px-auto">Copyright &copy; TuittER 2018 | No copyright infringement intended. Creation and use of this website is for educational purposes only.</footer>
+<footer class="py-3 bg-dark text-center text-white pt-3 pb-3 px-auto">Copyright &copy; ZuittER 2019 | No copyright infringement intended. Creation and use of this website is for educational purposes only.</footer>
