@@ -6,8 +6,8 @@
 
 <div class="container-fluid">
     <div class="row text-center mt-2">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
+        <div class="col-lg-1 col-md-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-12">
              @include('includes.message-block')
         </div>
     </div>
@@ -16,9 +16,10 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col">
+        <div class="col-lg-1 col-md-1"></div>
+		<div class="col-lg-10 col-md-10 col-sm-12">
 			<br>
-			<h6 class="text-center">This is your newsfeed. Follow interesting students and alumnis to get updates from them</h6>	
+			<h6 class="text-center">This is your newsfeed. Follow students and alumnis to get updates from them</h6>	
 		</div>
 	</div>
 </div>
@@ -38,7 +39,7 @@
                         {{-- <!-- {{ $post->user->firstname }}
                                     {{ $post->user->lastname }} --> --}}
                     </div>
-                    <div class="h7">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, JQuery, and Laravel
+                    <div class="h7">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, jQuery, and Laravel
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -65,9 +66,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Post something</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Post an Image</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <div class="card-body">
@@ -81,13 +82,13 @@
                                 <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?" name="post"></textarea>
                             </div>
                             <div class="btn-group">
-                            <button type="submit" class="button tuitt-button is-btn-blue">Tuitt!</button>
+                            <button type="submit" class="button tuitt-button is-btn-blue">Post</button>
                             </div>
                             <input type="hidden" value="{{ Session::token() }}" name="_token">
                          </form>   
 
                         </div>
-                        <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                        {{-- <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
                             <div class="form-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="customFile">
@@ -95,10 +96,10 @@
                                 </div>
                             </div>
                             <div class="btn-group">
-                            <button type="submit" class="button tuitt-button is-btn-blue">Tuitt!</button>
-                        </div>
+                                <button type="submit" class="button tuitt-button is-btn-blue">Post</button>
+                            </div>
                             <div class="py-4"></div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="btn-toolbar justify-content-between">
                         
@@ -183,6 +184,7 @@
                 <div class="card-footer">
                     <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                     <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                    <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                     {{-- @if (Auth::check())
                       @include('includes.errors')
                       {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
@@ -199,7 +201,6 @@
                       <p>This post has no comments</p>
                     @endforelse --}}
                    
-                    <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                     {{-- <!-- {{ method_field('DELETE')}} --> --}}
                     @if(Auth::user()->id == $post->user_id) 
                     
@@ -431,11 +432,6 @@
 
 </script> 
 
-
-
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 @endsection

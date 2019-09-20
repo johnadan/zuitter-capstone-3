@@ -114,12 +114,50 @@ body {
             display: none;
         }
 
-/*Tablet*/
-@media only screen and (min-width: 401px) and (max-width: 960px) {
+/* Bootstrap 4 breakpoints */
 
-}        
+/* 
+Extra small devices (portrait phones, less than 544px) 
+No media query since this is the default in Bootstrap because it is "mobile first"
+*/
 
-/*Mobile*/
-@media only screen and (max-width: 400px) {
+
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {  
+    /* .gedf-wrapper {
+        margin-top: 0.97rem;
+    }
+    .gedf-card {
+        margin-bottom: 2.77rem;
+    } */
+}
+
+/* Medium devices (tablets, 768px and up) 
+The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+    /* .gedf-wrapper {
+        margin-top: 0.97rem;
+    }
+    .gedf-card {
+        margin-bottom: 2.77rem;
+    } */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
     
+}
+
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+Custom media queries
+*/
+
+@media (max-width: 950px) { 
+
 }

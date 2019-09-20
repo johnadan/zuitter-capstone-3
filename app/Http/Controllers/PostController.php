@@ -65,6 +65,9 @@ class PostController extends Controller
         // ]);
         //$post = Post::find($request ['postId']); 
         //$post = Post::find($request ['postId'])->where('user_id', Auth::user()->id)->get();
+        $this->validate($request, [
+    		'editedpost' => 'required|max:1000'
+    	]);
         $post = Post::find($id);
         //dd($post);
         //$post = Post::find($request->user()->posts());

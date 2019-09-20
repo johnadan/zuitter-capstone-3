@@ -100,8 +100,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'editedpost' => [
+            'required' => 'Post cannot be empty',
+        ],
+        'post' => [
+            'required' => 'Post is required',
         ],
     ],
 

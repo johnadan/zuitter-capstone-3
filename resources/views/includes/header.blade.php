@@ -1,7 +1,12 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=0">
+
 <!-- favicon -->
-<link rel="shortcut icon" type="image/png" href="{{ asset('images/XpfKbKPb_400x400.jpg') }}">
+<link rel="shortcut icon" type="image/png" href="{{ asset('images/zuitt.png') }}">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 

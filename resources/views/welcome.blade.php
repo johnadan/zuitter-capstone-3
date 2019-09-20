@@ -10,7 +10,7 @@
         <div class="col-lg-10">
             <h1 class="text-center">Welcome to ZuittER!<h1>
             <br>
-            <h6 class="text-center">The professional forum/community exclusively for alumnis and students of Zuitt Coding Bootcamp Philippines!</h6>
+            <h6 class="text-center">The professional community site exclusively for alumnis and students of Zuitt Coding Bootcamp Philippines!</h6>
             <br>
             <a class="button tuitt-button is-btn-red text-white" href="{{ route('login') }}">Sign in</a>  
             <a class="button tuitt-button is-btn-blue" href="{{ route('register') }}" data-v-0a0ff1ea="">Sign up</a> 
