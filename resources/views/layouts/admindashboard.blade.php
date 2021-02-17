@@ -10,20 +10,6 @@
 			<!-- <h1>Hi, admin!<h1> -->
 			<br>
 			<h6 class="text-center mt-5 mb-5">Welcome to your Dashboard</h6>	
-			<!-- <form method="POST" action="/addItem" enctype="multipart/form-data">
-				<div class="form-group row add">
-				    <div class="col-md-8">
-				        <input type="text" class="form-control" id="name" name="name"
-				            placeholder="Enter some name" required>
-				        <p class="error text-center alert alert-danger hidden"></p>
-				    </div>
-				    <div class="col-md-4">
-				        <button class="btn btn-primary" type="submit" id="add">
-				            <span class="glyphicon glyphicon-plus"></span> ADD
-				        </button>
-				    </div>
-				</div>
-			</form> -->
 		</div>
 	</div>
 
@@ -48,47 +34,26 @@
 						<td>{{ $user->username }}</td>
 						<td>{{ $user->email }}</td>
             <td>{{ $user->created_at->format('D, M d, Y') }}</td>
-            @if ($user->status == 1) {
+            @if ($user->status == 1) 
             <td>Active</td>
-            } 
-            @else {
+            @else 
               <td>Inactive</td>
-            }
             @endif
-            @if ($user->status == 1) {
+
+            @if ($user->status == 1) 
           	<td>
 							<button type="button" id="archive" class="mr-2 button tuitt-button is-btn-red text-white" onclick="openArchiveModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->email }}' )" data-toggle="modal">Archive</button>
 							<button type="button" class="button tuitt-button is-btn-blue" onclick="openUpdateModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->username}}', '{{ $user->email }}' )" data-toggle="modal" id="update">Update</button>
 						</td>
-            } 
-            @else {
+            @else 
             <td>
 							<button type="button" id="restore" class="mr-2 button tuitt-button is-btn-red text-white" onclick="openRestoreModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->email }}' )" data-toggle="modal">Restore</button>
 							<button type="button" class="button tuitt-button is-btn-blue" onclick="openUpdateModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->username}}', '{{ $user->email }}' )" data-toggle="modal" id="update">Update</button>
 						</td>
-            }
             @endif
 					</tr>	
 				 @endforeach 
 				</tbody>
-				<!-- <tbody>
-					<tr>
-						<td>Sample User 1</td>
-						<td>5 mins. ago</td>
-						<td>
-							<button type="button" class="btn btn-danger" onclick="openDeleteModal()" data-toggle="modal">Delete</button>
-							<button type="button" class="btn btn-primary" onclick="openEditModal()" data-toggle="modal">Edit</button>
-						</td>
-					</tr>
-					<tr>
-						<td>Sample Task 2</td>
-						<td>5 mins. ago</td>
-						<td>
-							<button type="button" class="btn btn-danger" onclick="openDeleteModal()" data-toggle="modal">Delete</button>
-							<button type="button" class="btn btn-primary" onclick="openEditModal()" data-toggle="modal">Edit</button>
-						</td>
-					</tr>
-				</tbody> -->
 			</table>
 		</div>
 	</div>
