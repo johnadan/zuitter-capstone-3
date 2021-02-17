@@ -39,17 +39,17 @@
                         {{-- <!-- {{ $post->user->firstname }}
                                     {{ $post->user->lastname }} --> --}}
                     </div>
-                    <div class="h7">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, jQuery, and Laravel
+                    <div class="h7">404 bio not found
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="h6 text-muted">Followers</div>
-                        <div class="h5">956</div>
+                        <div class="h5">0</div>
                     </li>
                     <li class="list-group-item">
                         <div class="h6 text-muted">Following</div>
-                        <div class="h5">528</div>
+                        <div class="h5">0</div>
                     </li>
                    <!--  <li class="list-group-item">Student, Batch 16</li> -->
                 </ul>
@@ -336,9 +336,9 @@
             <div class="card gedf-card">
                 <div class="card-body" id="follow">
                     {{-- @foreach($users as $user) --}}
-                    <h5 class="card-title">Firstname Lastname{{-- $user->firstname --}} {{-- $user->lastname --}}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@firstnamelastname{{-- $user->username --}}</h6>
-                    <p class="card-text">Developer of web applications using JavaScript, PHP, HTML, CSS, Bootstrap, JQuery, AJAX, JSON, and Laravel</p>
+                    <h5 class="card-title">Lorem Ipsum{{-- $user->firstname --}} {{-- $user->lastname --}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@loremipsum{{-- $user->username --}}</h6>
+                    <p class="card-text">404 bio not found</p>
                     <!-- @csrf
                     @method('PUT') -->
                     <a href="#" class="card-link">Follow</a>
