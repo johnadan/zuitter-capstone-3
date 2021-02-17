@@ -36,14 +36,6 @@ class AdminDashboardController extends Controller
     }
 
     public function updateUser(Request $request, $id) {
-        // $this->validate($request, [
-        //     'postbody' => 'required'
-        // ]);
-        // $post = Post::find($id);
-        // $post->postbody = $request->editedpost;
-        // $post->update();
-        // return response()->json(['message' => 'Post was successfully edited!'], 200);
-        //  return redirect("/dashboard");
         $user = User::find($id);
         // $this->validate($request, [
         //     'editedfirstname' => 'required',

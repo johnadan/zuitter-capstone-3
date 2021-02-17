@@ -210,7 +210,7 @@
                     
                     <span class="ml-3">
                         <a href="#" class="card-link" onclick="openDeleteModal({{ $post->id }}, '{{ $post->content }}')"><i class="fa fa-mail-forward"></i> Delete</a>
-                        <!-- <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a> -->
+                        {{-- <!-- <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a> --> --}}
                     </span>
                     
                     
