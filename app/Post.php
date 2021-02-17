@@ -1,7 +1,8 @@
 <?php
+
+namespace App;
 use App\Comment;
 use App\User;
-namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
