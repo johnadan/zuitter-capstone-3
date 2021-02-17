@@ -1,7 +1,8 @@
 <?php
+
+namespace App;
 use App\Post;
 use App\Comment;
-namespace App;
 //use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,6 +42,12 @@ class User extends Authenticatable
          //return $this->hasMany('\App\Post', 'post_user');
          //return $this->hasMany('\App\Post', 'post_user', 'user_id');
          return $this->hasMany('\App\Post');
+    }
+
+    public function archiveUser($id)
+    {
+        return User::where('id', $id)
+        ->update(['status' => 0]);
     }
 
 }

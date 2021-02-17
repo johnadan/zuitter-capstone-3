@@ -37,6 +37,7 @@
 						<td>Username</td>
 						<td>Email address</td>
 						<td>Signed up on</td>
+            <td>Status</td>
 						<td>Actions</td>
 					</tr>
 				</thead>
@@ -46,11 +47,30 @@
 						<td>{{ $user->firstname }} {{ $user->lastname }}</td>
 						<td>{{ $user->username }}</td>
 						<td>{{ $user->email }}</td>
-						<td>{{ $user->created_at }}</td>
-						<td>
-							<!-- <button type="button" id="archive" class="button tuitt-button is-btn-red text-white" onclick="openArchiveModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->email }}' )" data-toggle="modal">Archive</button> -->
+            <td>{{ $user->created_at->format('D, M d, Y') }}</td>
+						<!-- <td>{{ $user->created_at->format('m/d/Y h:i:s') }}</td> -->
+            <!-- <td>{{ \Carbon\Carbon::parse($user->created_at->format('j F, Y')) }}</td> -->
+            @if ($user->status == 1) {
+            <td>Active</td>
+            } 
+            @else {
+              <td>Inactive</td>
+            }
+            @endif
+            <!-- {{ $user->status }} -->
+            @if ($user->status == 1) {
+          	<td>
+							<button type="button" id="archive" class="mr-2 button tuitt-button is-btn-red text-white" onclick="openArchiveModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->email }}' )" data-toggle="modal">Archive</button>
 							<button type="button" class="button tuitt-button is-btn-blue" onclick="openUpdateModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->username}}', '{{ $user->email }}' )" data-toggle="modal" id="update">Update</button>
 						</td>
+            } 
+            @else {
+            <td>
+							<button type="button" id="archive" class="mr-2 button tuitt-button is-btn-red text-white" onclick="openArchiveModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->email }}' )" data-toggle="modal">Restore</button>
+							<button type="button" class="button tuitt-button is-btn-blue" onclick="openUpdateModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->username}}', '{{ $user->email }}' )" data-toggle="modal" id="update">Update</button>
+						</td>
+            }
+            @endif
 					</tr>	
 				 @endforeach 
 				</tbody>
