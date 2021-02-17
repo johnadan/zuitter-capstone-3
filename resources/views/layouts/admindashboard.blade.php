@@ -48,8 +48,6 @@
 						<td>{{ $user->username }}</td>
 						<td>{{ $user->email }}</td>
             <td>{{ $user->created_at->format('D, M d, Y') }}</td>
-						<!-- <td>{{ $user->created_at->format('m/d/Y h:i:s') }}</td> -->
-            <!-- <td>{{ \Carbon\Carbon::parse($user->created_at->format('j F, Y')) }}</td> -->
             @if ($user->status == 1) {
             <td>Active</td>
             } 
@@ -57,7 +55,6 @@
               <td>Inactive</td>
             }
             @endif
-            <!-- {{ $user->status }} -->
             @if ($user->status == 1) {
           	<td>
 							<button type="button" id="archive" class="mr-2 button tuitt-button is-btn-red text-white" onclick="openArchiveModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->email }}' )" data-toggle="modal">Archive</button>
@@ -66,7 +63,7 @@
             } 
             @else {
             <td>
-							<button type="button" id="archive" class="mr-2 button tuitt-button is-btn-red text-white" onclick="openArchiveModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->email }}' )" data-toggle="modal">Restore</button>
+							<button type="button" id="restore" class="mr-2 button tuitt-button is-btn-red text-white" onclick="openRestoreModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->email }}' )" data-toggle="modal">Restore</button>
 							<button type="button" class="button tuitt-button is-btn-blue" onclick="openUpdateModal( {{$user->id}}, '{{ $user->firstname }}', '{{ $user->lastname }}', '{{ $user->username}}', '{{ $user->email }}' )" data-toggle="modal" id="update">Update</button>
 						</td>
             }
@@ -99,74 +96,109 @@
 </div>
 
 {{-- Edit Modal --}}
-    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit User Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-              	<form id="updateUser" method="POST" action="/updateUser/{{$user->id}}"> 
-                    {{ csrf_field() }}
-                    {{ method_field('PUT')}}
-                    <label>First Name</label>
-                    <input type="text" name="editedfirstname"></input>
-                    <br> 
-                    <label>Last Name</label>
-                    <input type="text" name="editedlastname"></input>
-                    <br>
-                    <label>Username</label>
-                    <input type="text" name="editedusername"> 
-                    <br>
-                    <label>Email</label>
-                    <input type="text" name="editedemail"></input>
-                    <br> 
-                    <button type="submit" class="button tuitt-button is-btn-red text-white" data-id="{{$user->id}}">Update</button>
-                </form>
-                
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="button tuitt-button is-btn-blue" data-dismiss="modal">Close</button>
-               {{-- <!-- <button type="button" class="btn btn-primary">Save changes</button> -->--}}
-              </div>
-            </div>
-        </div>    
-    </div> 
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit User Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="updateUser" method="POST" action="/updateUser/{{$user->id}}"> 
+                {{ csrf_field() }}
+                {{ method_field('PUT')}}
+                <label>First Name</label>
+                <input type="text" name="editedfirstname"></input>
+                <br> 
+                <label>Last Name</label>
+                <input type="text" name="editedlastname"></input>
+                <br>
+                <label>Username</label>
+                <input type="text" name="editedusername"> 
+                <br>
+                <label>Email</label>
+                <input type="text" name="editedemail"></input>
+                <br> 
+                <button type="submit" class="button tuitt-button is-btn-red text-white" data-id="{{$user->id}}">Update</button>
+            </form>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button tuitt-button is-btn-blue" data-dismiss="modal">Close</button>
+            {{-- <!-- <button type="button" class="btn btn-primary">Save changes</button> -->--}}
+          </div>
+        </div>
+    </div>    
+</div> 
 
 {{-- Archive Modal --}}
-    <div class="modal fade" id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Archive User</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form id="archiveUser" method="POST" enctype="multipart/form-data" action="/archiveUser/{{$user->id}}"> 
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE')}}
-                    <span id="Userarchive">Do you want to deactivate this user? This cannot be undone</span>
-                    <button type="submit" class="button tuitt-button is-btn-red text-white" data-id="{{$user->id}}">Yes</button>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="button tuitt-button is-btn-blue" data-dismiss="modal">Close</button>
-               {{-- <!-- <button type="button" class="btn btn-primary">Save changes</button> --> --}}
-              </div>
-            </div>
-        </div>  
-    </div>
+<div class="modal fade" id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Archive User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="archiveUser" method="POST" enctype="multipart/form-data" action="/archiveUser/{{$user->id}}"> 
+                {{ csrf_field() }}
+                <!-- {{ method_field('DELETE')}} -->
+                {{ method_field('PUT')}}
+                <span id="Userarchive">Do you want to deactivate this user?</span>
+                <button type="submit" class="button tuitt-button is-btn-red text-white" data-id="{{$user->id}}">Yes</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button tuitt-button is-btn-blue" data-dismiss="modal">Close</button>
+            {{-- <!-- <button type="button" class="btn btn-primary">Save changes</button> --> --}}
+          </div>
+        </div>
+    </div>  
+</div>
+
+{{-- Restore Modal --}}
+<div class="modal fade" id="restoreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Restore User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="restoreUser" method="POST" enctype="multipart/form-data" action="/restoreUser/{{$user->id}}"> 
+                {{ csrf_field() }}
+                <!-- {{ method_field('DELETE')}} -->
+                {{ method_field('PUT')}}
+                <span id="Userrestore">Do you want to restore this user?</span>
+                <button type="submit" class="button tuitt-button is-btn-red text-white" data-id="{{$user->id}}">Yes</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button tuitt-button is-btn-blue" data-dismiss="modal">Close</button>
+            {{-- <!-- <button type="button" class="btn btn-primary">Save changes</button> --> --}}
+          </div>
+        </div>
+    </div>  
+</div>
 
 <script type="text/javascript">
     
+    function openRestoreModal(id)
+    {
+      $("#restoreUser").attr("action", "/restoreUser/"+id) ;
+      $("#Userrestore").html('Do you want to restore this user?');
+      $("#restoreModal").modal("show");
+    }
+
     function openArchiveModal(id){
         $("#archiveUser").attr("action", "/archiveUser/"+id) ;
-        $("#Userarchive").html('Do you want to archive this user? This cannot be undone');
+        $("#Userarchive").html('Do you want to archive this user?');
         $("#archiveModal").modal("show");
     }
 

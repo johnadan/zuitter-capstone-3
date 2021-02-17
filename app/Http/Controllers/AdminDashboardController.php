@@ -65,29 +65,15 @@ class AdminDashboardController extends Controller
         //dd($id);
         // $user->delete();
         $user->archiveUser($id);
-        return redirect('/admindashboard')->with(['message' => 'User was successfully archive']);
+        return redirect('/admindashboard')->with(['message' => 'User was successfully archived']);
     }
 
-    // public function addUser(){
-    //     $user = new User();
-    // }
-
-    // public function addItem(Request $request) {
-    // $rules = array (
-    //         'name' => 'required'
-    // );
-    // $validator = Validator::make ( Input::all (), $rules );
-    // if ($validator->fails ())
-    //     return Response::json ( array (
-                    
-    //             'errors' => $validator->getMessageBag ()->toArray ()
-    //     ) );
-    //     else {
-    //         $data = new Data ();
-    //         $data->name = $request->name;
-    //         $data->save ();
-    //         return response ()->json ( $data );
-    //     }
-    // }
+    public function restoreUser($id) 
+    {
+        $user = User::find($id);
+        $user->restoreUser($id);
+        return redirect('/admindashboard')->with(['message' => 'User was successfully restored']);
+    }
+    
     
 }

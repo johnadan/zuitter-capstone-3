@@ -50,4 +50,10 @@ class User extends Authenticatable
         ->update(['status' => 0]);
     }
 
+    public function restoreUser($id)
+    {
+        return User::where('id', $id)
+        ->update(['status' => 1]);
+    }
+
 }

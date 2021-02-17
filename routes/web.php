@@ -55,7 +55,9 @@ Route::middleware(['admin'])->group(function(){
 Route::get('/admindashboard', "AdminDashboardController@showadminDashboard");
 //Route::post ( '/addItem', 'AdminDashboardController@addItem' );
 Route::put('/updateUser/{id}', "AdminDashboardController@updateUser");
-Route::delete('/archiveUser/{id}', "AdminDashboardController@archiveUser");
+// Route::delete('/archiveUser/{id}', "AdminDashboardController@archiveUser");
+Route::put('/archiveUser/{id}', "AdminDashboardController@archiveUser");
+Route::put('/restoreUser/{id}', "AdminDashboardController@restoreUser");
 });
 // });
 Auth::routes();
