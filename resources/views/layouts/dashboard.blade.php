@@ -158,13 +158,13 @@
                 </div>
                 <div class="card-body">
                     
-                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Posted by {{ $post->user->firstname }} {{ $post->user->lastname }}
+                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Posted by {{ ucfirst($post->user->firstname) }} {{ ucfirst($post->user->lastname) }}
                         {{-- (Auth::user()->lastname) --}}
                         {{-- <!-- dd(Auth::user()->firstname) --> --}}
                         {{-- <!-- {{ $post->user->firstname }} 
                         {{ $post->user->lastname }} --> --}}
                         at 
-                        {{ $post->created_at }}
+                        {{ $post->created_at->format('D, M d, Y') }}
                     </div>
                     {{-- <!-- <a class="card-link" href="#">
                         <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
