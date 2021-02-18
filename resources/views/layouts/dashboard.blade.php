@@ -58,8 +58,6 @@
         </div>
 
         <div class="col-md-6 gedf-main">
-
-           {{-- <!--- \\\\\\\Post--> --}}
             <div class="card gedf-card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -121,13 +119,9 @@
                     </div>
                 </div>
             </div>
-           {{-- <!-- Post /////--> --}}
-
-           {{-- <!--- \\\\\\\Post--> --}}
+           
+           @foreach($posts as $post)
             <div class="card gedf-card">
-
-                @foreach($posts as $post)
-                    {{-- <!-- @foreach($post->Post as $userpost) --> --}}
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex justify-content-between align-items-center">
@@ -217,10 +211,9 @@
                    @endif 
                 </div>
                    {{-- <!-- @endforeach --> --}}
-                @endforeach
             </div>
-           {{-- <!-- Post /////--> --}}
-
+            @endforeach
+           
            {{-- <!--- \\\\\\\Post-->
             <!-- <div class="card gedf-card">
                 <div class="card-header">
@@ -278,9 +271,7 @@
                     <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                 </div>
             </div> -->
-            <!-- Post /////-->
-
-            <!--- \\\\\\\Post-->
+            
             <!-- <div class="card gedf-card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
@@ -329,7 +320,6 @@
                     <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                 </div>
             </div> -->
-            <!-- Post /////--> --}}
         </div>
         
         <div class="col-md-3">
