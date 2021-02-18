@@ -22,7 +22,8 @@ Route::get('/', function () {
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware(['auth'])->group(function(){
+// 'auth', 
+Route::middleware(['member'])->group(function(){
 Route::get('/dashboard', "PostController@getDashboard");
 Route::post('/createpost', "PostController@postCreatePost");
 Route::delete('/deletePost/{id}', "PostController@getDeletePost")->name('post.delete');
@@ -44,6 +45,7 @@ Route::get('/post/{id}', 'PostController@show')->name('posts.show');
 Route::resource('comments', 'CommentController');
 });
 
+// 'auth', 
 Route::middleware(['admin'])->group(function(){
 Route::get('/admindashboard', "AdminDashboardController@showadminDashboard");
 Route::put('/updateUser/{id}', "AdminDashboardController@updateUser");
