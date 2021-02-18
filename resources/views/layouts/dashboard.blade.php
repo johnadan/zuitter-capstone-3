@@ -170,12 +170,12 @@
                     @if(Auth::user()->id == $post->user_id) 
                     
                      <span class="ml-3" id="editPost">
-                        <a href="#" class="card-link" data-toggle="modal" onclick="openEditModal({{ $post->id }}, '{{ $post->content }}' )">Edit</a>
+                        <a href="#" class="card-link" data-toggle="modal" onclick="openEditModal({{ $post->id }}, '{{ $post->content }}' )"><i class="fa fa-edit"></i> Edit</a>
                         <!-- <i class="fa fa-mail-forward"></i>  -->
                     </span>
                     
                     <span class="ml-3">
-                        <a href="#" class="card-link" onclick="openDeleteModal({{ $post->id }}, '{{ $post->content }}')">Delete</a>
+                        <a href="#" class="card-link" onclick="openDeleteModal({{ $post->id }}, '{{ $post->content }}')"><i class="fa fa-trash"></i> Delete</a>
                         <!-- <i class="fa fa-mail-forward"></i>  -->
                         {{-- <!-- <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a> --> --}}
                     </span>

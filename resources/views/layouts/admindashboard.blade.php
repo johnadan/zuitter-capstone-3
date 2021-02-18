@@ -114,7 +114,8 @@
                 <!-- {{ method_field('DELETE')}} -->
                 {{ method_field('PUT')}}
                 <span id="Userarchive">Do you want to deactivate this user?</span>
-                <button type="submit" class="button tuitt-button is-btn-red text-white" data-id="{{$user->id}}">Yes</button>
+                <br>
+                <button type="submit" class="button tuitt-button is-btn-red text-white mt-2" data-id="{{$user->id}}">Yes</button>
             </form>
           </div>
           <div class="modal-footer">
@@ -141,7 +142,8 @@
                 <!-- {{ method_field('DELETE')}} -->
                 {{ method_field('PUT')}}
                 <span id="Userrestore">Do you want to restore this user?</span>
-                <button type="submit" class="button tuitt-button is-btn-red text-white" data-id="{{$user->id}}">Yes</button>
+                <br>
+                <button type="submit" class="button tuitt-button is-btn-red text-white mt-2" data-id="{{$user->id}}">Yes</button>
             </form>
           </div>
           <div class="modal-footer">
