@@ -76,7 +76,6 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="sr-only" for="message">post</label>
-                               {{-- <!-- <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea> --> --}}
                                 <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?" name="post"></textarea>
                             </div>
                             <div class="btn-group">
@@ -100,16 +99,11 @@
                         </div> --}}
                     </div>
                     <div class="btn-toolbar justify-content-between">
-                        
-                       {{-- <!-- <div class="btn-group">
-                                <a target="_blank" id="tuitt_home_nav_apply_button_mobile" class="button tuitt-button is-btn-red text-white" data-v-0685d64a="">Tuitt!</a> 
-                        </div> --> --}}
-
                         <div class="btn-group">
-                            <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            <!-- <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="fa fa-globe"></i>
-                            </button>
+                            </button> -->
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
                                 <a class="dropdown-item" href="#"><i class="fa fa-globe"></i> Public</a>
                                 <a class="dropdown-item" href="#"><i class="fa fa-users"></i> Friends</a>
@@ -141,7 +135,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <!-- <div>
                             <div class="dropdown">
                                 <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-ellipsis-h"></i>
@@ -153,57 +147,36 @@
                                     <a class="dropdown-item" href="#">Report</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="card-body">
                     
                     <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Posted by {{ ucfirst($post->user->firstname) }} {{ ucfirst($post->user->lastname) }}
-                        {{-- (Auth::user()->lastname) --}}
-                        {{-- <!-- dd(Auth::user()->firstname) --> --}}
-                        {{-- <!-- {{ $post->user->firstname }} 
-                        {{ $post->user->lastname }} --> --}}
                         at 
                         {{ $post->created_at->format('D, M d, Y') }}
                     </div>
-                    {{-- <!-- <a class="card-link" href="#">
-                        <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
-                    </a> --> --}}
                     <p class="card-text" data-id="{{ $post->id }}" id="postcontent">
-                       {{-- <!-- or data-id --> --}}
                         {{ $post->content }}
                     </p>
                     
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                    <!-- <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                     <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                    <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                    {{-- @if (Auth::check())
-                      @include('includes.errors')
-                      {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
-                      <p>{{ Form::textarea('content', old('content')) }}</p>
-                      {{ Form::hidden('post_id', $post->id) }}
-                      <p>{{ Form::submit('Send') }}</p>
-                    {{ Form::close() }}
-                    @endif
-                    @forelse ($post->comments as $comment)
-                      <p>{{ $comment->user->name }} {{$comment->created_at}}</p>
-                      <p>{{ $comment->body }}</p>
-                      <hr>
-                    @empty
-                      <p>This post has no comments</p>
-                    @endforelse --}}
-                   
+                    <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a> -->
+                    
                     {{-- <!-- {{ method_field('DELETE')}} --> --}}
                     @if(Auth::user()->id == $post->user_id) 
                     
                      <span class="ml-3" id="editPost">
-                        <a href="#" class="card-link" data-toggle="modal" onclick="openEditModal({{ $post->id }}, '{{ $post->content }}' )"><i class="fa fa-mail-forward"></i> Edit</a>
+                        <a href="#" class="card-link" data-toggle="modal" onclick="openEditModal({{ $post->id }}, '{{ $post->content }}' )">Edit</a>
+                        <!-- <i class="fa fa-mail-forward"></i>  -->
                     </span>
                     
                     <span class="ml-3">
-                        <a href="#" class="card-link" onclick="openDeleteModal({{ $post->id }}, '{{ $post->content }}')"><i class="fa fa-mail-forward"></i> Delete</a>
+                        <a href="#" class="card-link" onclick="openDeleteModal({{ $post->id }}, '{{ $post->content }}')">Delete</a>
+                        <!-- <i class="fa fa-mail-forward"></i>  -->
                         {{-- <!-- <a href="{{ route('post.delete', ['post_id' => $post->id]) }}" class="card-link"><i class="fa fa-mail-forward"></i> Delete</a> --> --}}
                     </span>
                     
