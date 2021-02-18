@@ -15,10 +15,15 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->isAdmin == 1){
+        // if(Auth::user() && Auth::user()->isAdmin == 1){
+        if(Auth::user()->isAdmin == 1){
+            //return redirect('/admindashboard');
             return $next($request);
+        } else {
+            abort(403, 'Unauthorized Access!');
         }
-        return redirect('/dashboard');
+
         //return $next($request);
+        return redirect('/admindashboard');
     }
 }
