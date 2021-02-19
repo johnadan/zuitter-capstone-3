@@ -4,13 +4,14 @@ namespace App;
 use App\Post;
 use App\Comment;
 //use Illuminate\Database\Eloquent\Model;
+//use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
+    //use HasRoles;
     /**
      * The attributes that are mass assignable.
      *
@@ -56,4 +57,8 @@ class User extends Authenticatable
         ->update(['status' => 1]);
     }
 
+    public function findForPassport($identifier) 
+    {
+        return User::orWhere('email', $identifier)->where('status', 1)->first();
+    }
 }

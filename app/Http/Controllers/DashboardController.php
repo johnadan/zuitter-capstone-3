@@ -14,6 +14,7 @@ class DashboardController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+        //$this->middleware('member', ['except' => ['logout']]);
         $this->middleware('member');
     }
 
@@ -24,12 +25,10 @@ class DashboardController extends Controller
      */
     public function showuserDashboard()
     {
-        // if(Auth::user()->isAdmin === 1){
-        //     return view('layouts.admindashboard');
-        // }
-        // else{
+        if(Auth::user()->status === 1){
             return view('layouts.dashboard');
-        //}
-        
+        } else {
+            return redirect("/")->with(['message' => 'Sorry, your account is inactive.']);
+        }
     }
 }
