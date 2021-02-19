@@ -1,6 +1,6 @@
 <nav class="nav navbar navbar-expand-lg sticky-top">
 
-{{-- @guest
+  @guest
 
   <a class="navbar-brand" href="{{ route('welcome') }}">
     <img src="{{ asset('images/zuitt.png') }}" width="50" height="50" alt="zuitt logo">
@@ -18,9 +18,11 @@
         <a class="nav-link" href="{{ route('register') }}">Register <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-  </div>   --}}
+  </div>
 
-  @if (Auth::user()->isAdmin == 0) 
+  @endguest
+
+  @member 
 
   <a class="navbar-brand" href="/dashboard">
     <img src="{{ asset('images/zuitt.png') }}" width="50" height="50" alt="zuitt logo">
@@ -49,10 +51,10 @@
       </li> --}}
       <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">Logout</a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
+        document.getElementById('logout-form').submit();">Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
       </li>
     </ul>
     {{-- <form class="form-inline my-2 my-lg-0">
@@ -61,8 +63,9 @@
     </form> --}}
   </div>
 
-  {{-- @if (Auth::user()->isAdmin == 1) --}}
-  @elseif (Auth::user()->isAdmin == 1)
+  @endmember
+
+  @admin
 
   <a class="navbar-brand" href="/admindashboard">
     <img src="{{ asset('images/zuitt.png') }}" width="50" height="50" alt="zuitt logo">
@@ -78,35 +81,16 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">Logout</a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
+        document.getElementById('logout-form').submit();">Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
       </li>
     </ul>
   </div>
 
-  @else
-  <a class="navbar-brand" href="{{ route('welcome') }}">
-    <img src="{{ asset('images/zuitt.png') }}" width="50" height="50" alt="zuitt logo">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  @endadmin
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ route('login') }}">Login <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ route('register') }}">Register <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-  </div>  
-
-  @endif  
-  
 </nav>
 
 
