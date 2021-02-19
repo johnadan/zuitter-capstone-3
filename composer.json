@@ -17,7 +17,7 @@
         "orangehill/iseed": "dev-master"
     },
     "require-dev": {
-        "symfony/thanks": "1.2.10"
+        "symfony/thanks": "1.2.10",
         "facade/ignition": "2.5.13",
         "filp/whoops": "2.9.2",
         "mockery/mockery": "1.4.2",
