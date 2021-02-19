@@ -4,14 +4,14 @@ namespace App;
 use App\Post;
 use App\Comment;
 //use Illuminate\Database\Eloquent\Model;
-use Spatie\Permission\Traits\HasRoles;
+//use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use HasRoles;
+    //use HasRoles;
     /**
      * The attributes that are mass assignable.
      *
