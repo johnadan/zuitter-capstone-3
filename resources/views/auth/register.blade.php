@@ -94,6 +94,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                                <div class="g-recaptcha" data-sitekey="6LftXGgaAAAAANpNyRyPmViitf2IEE7vxQBhKi2M"></div>
                                 <button type="submit" class="button tuitt-button is-btn-blue">
                                     Register
                                 </button>
