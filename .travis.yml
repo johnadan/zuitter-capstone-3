@@ -1,23 +1,36 @@
 os:
   - linux
 
+dist: bionic
+
 language: php
 
 php:
   - '8.0.2'
-  
+services:
+  - mysql
+
+cache:
+  directories:
+    - node_modules
+    - vendor
+
 before_script:
   - composer self-update
   - composer install --no-interaction
+  #- composer install --prefer-source --no-interaction --dev
   #- cp .env.travis .env
   - cp .env.example .env
+  - cp .env.example .env.travis
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
   - nvm install 7.7.1
   - npm install npm@latest -g
   - npm install -g jshint
   - npm install
-  
+  - php artisan key:generate
+  - php artisan migrate
+
 script:
   #- vendor/bin/phpunit --coverage-text
   - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
@@ -27,6 +40,6 @@ notifications:
   #slack:
     #on_success: never
     #on_fail: always
-  email:
+email:
     - mclemadan@gmail.com
     #- other@example.com

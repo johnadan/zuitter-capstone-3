@@ -17,5 +17,8 @@
         "laravel-mix": "1.7.2",
         "lodash": "4.17.20",
         "vue": "2.6.12"
+    },
+    "dependencies": {
+        "jshint": "^2.12.0"
     }
 }
