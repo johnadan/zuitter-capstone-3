@@ -29,7 +29,7 @@ before_script:
   - npm install -g jshint
   - npm install
   - php artisan key:generate
-  - php artisan migrate
+  #- php artisan migrate
 
 script:
   #- vendor/bin/phpunit --coverage-text
