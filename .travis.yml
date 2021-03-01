@@ -25,7 +25,7 @@ before_script:
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
   - nvm install 7.7.1
-  - npm install npm@latest -g
+  #- npm install npm@latest -g
   - npm install -g jshint
   - npm install
   - php artisan key:generate
