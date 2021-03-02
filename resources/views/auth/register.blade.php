@@ -94,7 +94,13 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <div class="g-recaptcha" data-sitekey="6LftXGgaAAAAANpNyRyPmViitf2IEE7vxQBhKi2M"></div>
+                                <!-- <div class="g-recaptcha" data-sitekey="6LftXGgaAAAAANpNyRyPmViitf2IEE7vxQBhKi2M"></div> -->
+                                <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_SITE_KEY') }}"></div>
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="invalid-feedback" style="display: block;">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
                                 <button type="submit" class="button tuitt-button is-btn-blue">
                                     Register
                                 </button>
